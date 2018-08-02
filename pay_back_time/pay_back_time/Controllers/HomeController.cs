@@ -18,6 +18,11 @@ namespace pay_back_time.Controllers
             return View();
         }
 
+        public ActionResult SuccessfulProjects()
+        {
+            return View();
+        }
+
         public ActionResult Events()
         {
             return View();

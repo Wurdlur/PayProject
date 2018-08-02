@@ -1,14 +1,14 @@
-﻿
+﻿@*will need model*@
 @{
-    ViewBag.Title = "NCCS Innovation Lab | Projects";
+    ViewBag.Title = "NCCS Innovation Lab | Successful Projects";
 }
 
 <nav class='navbar-fixed-top-after'>
     <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
     <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
     @Html.ActionLink("HOME", "Index", "Home")
-    @Html.ActionLink("PROJECTS", "Projects", "Home", null, new { @class = "active" })
-    @Html.ActionLink("SUCCESSFUL PROJECTS", "SuccessfulProjects", "Home")
+    @Html.ActionLink("PROJECTS", "Projects", "Home")
+    @Html.ActionLink("SUCCESSFUL PROJECTS", "SuccessfulProjects", "Home", null, new { @class = "active" })
     @Html.ActionLink("EVENTS", "Events", "Home")
     @Html.ActionLink("CONTACT", "Contact", "Home")
     @Html.ActionLink("APPLY", "Apply", "Home")
@@ -23,28 +23,30 @@
     <div class="row fit theme-steelgray">
         <div class="col-l-7 section-content">
             <h1 class="uppercase animated-text white">
-                Real-World
+                Successful
                 <span class="font-bold block nc-yellow">projects</span>
             </h1>
-            <p class="white animated-text">Here at Neumont's Innovation Lab, students come up with ideas and learn how to create a proposal, develop them, and market them for the rest of the world to see. Students may work on their own or have the opportunity to build teams with other students from BYU, University of Utah, and Westminister College to help in areas of technical expertise.</p>
+            <p class="white animated-text">List of Successful Projects from the Innovation Lab at Neumont College of Computer Science</p>
 
             <div class='nc-btn' id='view-projects'>
                 VIEW PROJECTS
             </div>
             @*@if (@User.IsInRole("Admin"))
-            {
-                @Html.ActionLink("ADD PROJECT", "AddProject", new { @class = "nc-btn" }, new {@id = "view-projects"});
-
-            }*@
+                {
+                    <div class='nc-btn' id='view-projects'>
+                        ADD PROJECT
+                    </div>
+                }*@
         </div>
         <div class="col-l-5" id="projects-bg"></div>
 
-        @*@foreach (var project in Model.Projects)
-        {
-            if (@User.IsInRole("Admin"))
+        @*@foreach (var project in Model.SuccessfulProjects)
             {
-                    @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectId }, new { @class = "nc-btn" }, new {@id = "view-projects"});
-            }
-        }*@
+                if (@User.IsInRole("Admin"))
+                {
+                        @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectId }, new { @class = "nc-btn" }, new {@id = "view-projects"})
+
+                }
+            }*@
     </div>
 </div>
