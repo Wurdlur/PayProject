@@ -10,6 +10,7 @@ namespace pay_back_time.Controllers
     {
         public ActionResult Index()
         {
+            ProjectModel = new ProjectModel()
             return View();
         }
 
