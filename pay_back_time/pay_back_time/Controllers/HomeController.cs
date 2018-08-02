@@ -13,13 +13,14 @@ namespace pay_back_time.Controllers
         IProjectService service = new ProjectService();
         public ActionResult Index()
         {
-            ProjectModel = new ProjectModel()
+            ProjectModel mod = new ProjectModel();
             return View();
         }
 
         public ActionResult Projects()
         {
-            return View();
+            ProjectListModel model = service.GetProjects();
+            return View(model);
         }
 
         public ActionResult SuccessfulProjects()

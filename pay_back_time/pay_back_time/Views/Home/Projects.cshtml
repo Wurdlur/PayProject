@@ -1,4 +1,5 @@
-﻿
+﻿@model ProjectLib.PModels.ProjectListModel
+
 @{
     ViewBag.Title = "NCCS Innovation Lab | Projects";
 }
@@ -26,25 +27,62 @@
                 Real-World
                 <span class="font-bold block nc-yellow">projects</span>
             </h1>
-            <p class="white animated-text">Here at Neumont's Innovation Lab, students come up with ideas and learn how to create a proposal, develop them, and market them for the rest of the world to see. Students may work on their own or have the opportunity to build teams with other students from BYU, University of Utah, and Westminister College to help in areas of technical expertise.</p>
+            <p class="white animated-text">
+                Here at Neumont's Innovation Lab, students come up with ideas and learn how to create a proposal, develop them, and market them for the rest of the world to see.
+                Students may work on their own or have the opportunity to build teams with other students from BYU, University of Utah, and Westminister College to help in areas of technical expertise.
+            </p>
 
-            <div class='nc-btn' id='view-projects'>
-                VIEW PROJECTS
-            </div>
-            @*@if (@User.IsInRole("Admin"))
+            @*<div class='nc-btn' id='view-projects'>
+                    VIEW PROJECTS
+                </div>*@
+
+            @if (@User.IsInRole("Admin"))
             {
-                @Html.ActionLink("ADD PROJECT", "AddProject", new { @class = "nc-btn" }, new {@id = "view-projects"});
+                @Html.ActionLink("ADD PROJECT", "AddProject", new { @class = "nc-btn" }, new { @id = "view-projects" });
 
-            }*@
+            }
         </div>
         <div class="col-l-5" id="projects-bg"></div>
 
-        @*@foreach (var project in Model.Projects)
-        {
-            if (@User.IsInRole("Admin"))
-            {
-                    @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectId }, new { @class = "nc-btn" }, new {@id = "view-projects"});
-            }
-        }*@
     </div>
+</div>
+
+<div class="section" id="projectSlides">
+    @foreach (var project in Model.Projects)
+    {
+        if (!@project.Success)
+        {
+            <div class="slide">
+                <div class="row fit">
+                    <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
+                        @if (@User.IsInRole("Admin"))
+                        {
+                            @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectID}, new { @id = "view-projects", @class = "nc-btn" })
+                        }
+
+                    </div>
+                    <div class="col-m-7 project-content theme-white">
+                        <h1 class="uppercase project-name">@project.Name</h1><h3 class="uppercase project-owner">@project.Owner</h3>
+                        <p>
+                            @project.Details
+                        </p>
+
+                        @if (@project.Owner.Contains("Sophie "))
+                        {
+                            <a target="_blank" href="http://sophiewargo.com/winematcher/index.html">View Wine and Dine here</a>
+                        }
+                        else if (@project.Owner.Contains("Morgan"))
+                        {
+                            <a target="_blank" href="https://blog.neumont.edu/blog/2018/4/19/neumont-capstone-projects-publishme-by-morgan-smith">View Morgan's Full Story</a>
+                        }
+
+                    </div>
+                </div>
+                <br />
+                <br />
+            </div>
+
+        }
+
+    }
 </div>
