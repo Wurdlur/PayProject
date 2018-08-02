@@ -1,4 +1,5 @@
-﻿@*will need model*@
+﻿@model ProjectLib.PModels.ProjectListModel
+
 @{
     ViewBag.Title = "NCCS Innovation Lab | Successful Projects";
 }
@@ -19,34 +20,67 @@
     <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
 </div>
 
-<div class="section">
-    <div class="row fit theme-steelgray">
-        <div class="col-l-7 section-content">
-            <h1 class="uppercase animated-text white">
-                Successful
-                <span class="font-bold block nc-yellow">projects</span>
-            </h1>
-            <p class="white animated-text">List of Successful Projects from the Innovation Lab at Neumont College of Computer Science</p>
+    <div class="section">
+        <div class="row fit theme-steelgray">
+            <div class="col-l-7 section-content">
+                <h1 class="uppercase animated-text white">
+                    Successful
+                    <span class="font-bold block nc-yellow">projects</span>
+                </h1>
+                <p class="white animated-text">List of Successful Projects from the Innovation Lab at Neumont College of Computer Science</p>
 
-            <div class='nc-btn' id='view-projects'>
-                VIEW PROJECTS
+                <div class='nc-btn' id='view-projects'>
+                    VIEW PROJECTS
+                </div>
+                @*@if (@User.IsInRole("Admin"))
+                    {
+                        <div class='nc-btn' id='view-projects'>
+                            ADD PROJECT
+                        </div>
+                    }*@
             </div>
-            @*@if (@User.IsInRole("Admin"))
-                {
-                    <div class='nc-btn' id='view-projects'>
-                        ADD PROJECT
-                    </div>
-                }*@
+            <div class="col-l-5" id="projects-bg"></div>
+
+
         </div>
-        <div class="col-l-5" id="projects-bg"></div>
-
-        @*@foreach (var project in Model.SuccessfulProjects)
-            {
-                if (@User.IsInRole("Admin"))
-                {
-                        @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectId }, new { @class = "nc-btn" }, new {@id = "view-projects"})
-
-                }
-            }*@
     </div>
-</div>
+
+    <div class="section" id="projectSlides">
+        @for (int i = 0; i < 5; i++)
+        {
+        <div class="slide">
+            <div class="row fit">
+                <div class="col-m-5 project-bg" style="background-image: url('https://www.neumont.edu/cmsimages/faculty_jerrypayx.png');">
+                    @Html.ActionLink("EDIT", "EditProject", new { @class = "nc-btn" }, new { @id = "view-projects", @class = "nc-btn" })
+                </div>
+                <div class="col-m-7 project-content theme-white">
+                    <h1 class="uppercase project-name">Wine and Dine</h1><h3 class="uppercase project-owner">Sophie Wargo</h3>
+                    <p>
+                        This completely frontend (for now) application was built as a final project for my Advanced Web Scripting class. The requirements were to make it solely frontend while using an outside API (Yummly) and a frontend framework (React).
+                        This was my first experience developing with React.This application asks users to select dietary options so it can return a proper meal accompanied with a wine that would pair well based on flavors and ingredients.
+                        This project is currently in further development with plans to have it allow users to save wine and meal pairings and share them on social media.
+                    </p>
+
+                    <a target="_blank" href="http://sophiewargo.com/winematcher/index.html">View Wine and Dine here</a>
+
+                </div>
+            </div>
+
+        </div>
+            <br />
+            <br />
+            if (@User.IsInRole("Admin"))
+            {
+
+            }
+        }
+    </div>
+
+@*<div>
+
+        @foreach (var project in Model.Projects)
+        {
+            <p>@project.Name</p>
+        }
+    </div>*@
+

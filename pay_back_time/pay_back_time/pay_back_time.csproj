@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ApplyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -264,6 +265,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
+    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\Linotype_-_DINNextLTPro-Bold.otf" />
@@ -275,11 +277,16 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Apply\Apply.cshtml" />
     <Content Include="Views\Apply\ApplySuccess.cshtml" />
+    <Content Include="Views\Home\SuccessfulProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">
-      <Project>{c8f853a5-9967-451b-b170-4d0d97feb9bf}</Project>
+      <Project>{C8F853A5-9967-451B-B170-4D0D97FEB9BF}</Project>
       <Name>ModelLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectLib\ProjectLib.csproj">
+      <Project>{44363479-3a6c-4b6c-b190-8cf38764451d}</Project>
+      <Name>ProjectLib</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

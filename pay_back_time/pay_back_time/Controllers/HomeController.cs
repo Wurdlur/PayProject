@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectLib.PModels;
+using ProjectLib.PServiceFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +10,7 @@ namespace pay_back_time.Controllers
 {
     public class HomeController : Controller
     {
+        IProjectService service = new ProjectService();
         public ActionResult Index()
         {
             return View();
@@ -20,7 +23,8 @@ namespace pay_back_time.Controllers
 
         public ActionResult SuccessfulProjects()
         {
-            return View();
+            ProjectListModel model = service.GetProjects();
+            return View(model);
         }
 
         public ActionResult Events()
