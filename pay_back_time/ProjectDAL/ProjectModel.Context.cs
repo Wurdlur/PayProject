@@ -13,10 +13,10 @@ namespace ProjectDAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ProjectsEntities : DbContext
+    public partial class ProjectEntities : DbContext
     {
-        public ProjectsEntities()
-            : base("name=ProjectsEntities")
+        public ProjectEntities()
+            : base("name=ProjectEntities")
         {
         }
     

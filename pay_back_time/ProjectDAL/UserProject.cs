@@ -17,7 +17,7 @@ namespace ProjectDAL
         public int ID { get; set; }
         public string ProjectName { get; set; }
         public string ProjectOwner { get; set; }
-        public string ProjectDetail { get; set; }
+        public string ProjectDetails { get; set; }
         public string ProjectImage { get; set; }
         public bool Successful { get; set; }
     }

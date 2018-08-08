@@ -10,14 +10,14 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProjectName" Type="varchar" MaxLength="20" />
-          <Property Name="ProjectOwner" Type="varchar" MaxLength="20" />
-          <Property Name="ProjectDetail" Type="varchar" MaxLength="1000" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ProjectOwner" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="ProjectDetails" Type="varchar" MaxLength="1000" />
           <Property Name="ProjectImage" Type="varchar" MaxLength="40" />
           <Property Name="Successful" Type="bit" Nullable="false" />
         </EntityType>
         <EntityContainer Name="ProjectsModelStoreContainer">
-          <EntitySet Name="UserProjects" EntityType="Self.UserProjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProjects" EntityType="Self.UserProjects" Schema="teamProjects" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -29,13 +29,13 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProjectName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectOwner" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ProjectDetail" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectOwner" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProjectDetails" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="ProjectImage" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="Successful" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="ProjectsEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ProjectEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="UserProjects" EntityType="Self.UserProject" />
         </EntityContainer>
       </Schema>
@@ -43,14 +43,14 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProjectsModelStoreContainer" CdmEntityContainer="ProjectsEntities">
+        <EntityContainerMapping StorageEntityContainer="ProjectsModelStoreContainer" CdmEntityContainer="ProjectEntities">
           <EntitySetMapping Name="UserProjects">
             <EntityTypeMapping TypeName="ProjectsModel.UserProject">
               <MappingFragment StoreEntitySet="UserProjects">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
                 <ScalarProperty Name="ProjectOwner" ColumnName="ProjectOwner" />
-                <ScalarProperty Name="ProjectDetail" ColumnName="ProjectDetail" />
+                <ScalarProperty Name="ProjectDetails" ColumnName="ProjectDetails" />
                 <ScalarProperty Name="ProjectImage" ColumnName="ProjectImage" />
                 <ScalarProperty Name="Successful" ColumnName="Successful" />
               </MappingFragment>

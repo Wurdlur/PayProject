@@ -14,11 +14,11 @@ namespace ProjectLib.PServiceFolder
         public ProjectListModel GetProjects()
         {
             ProjectListModel model = new ProjectListModel();
-            using (var db = new ProjectsEntities())
+            using (var db = new ProjectEntities())
             {
                 var query = db.UserProjects.Select(x => x);
-                var weaponList = query.ToList();
-                weaponList.ForEach(project =>
+                var projectList = query.ToList();
+                projectList.ForEach(project =>
                 {
                     model.Projects.Add(
                         new ProjectModel
@@ -26,7 +26,7 @@ namespace ProjectLib.PServiceFolder
                             ProjectID = project.ID,
                             Name = project.ProjectName,
                             Owner = project.ProjectOwner,
-                            Details = project.ProjectDetail,
+                            Details = project.ProjectDetails,
                             Image = project.ProjectImage,
                             Success = project.Successful
                         }
@@ -43,13 +43,13 @@ namespace ProjectLib.PServiceFolder
 
         public void AddProject(ProjectModel model)
         {
-            using (var db = new ProjectsEntities())
+            using (var db = new ProjectEntities())
             {
                 var newProject = new UserProject()
                 {
                     ProjectName = model.Name,
                     ProjectOwner = model.Owner,
-                    ProjectDetail = model.Details,
+                    ProjectDetails = model.Details,
                     Successful = model.Success,
                     ProjectImage = model.Image,
                 };
@@ -60,22 +60,22 @@ namespace ProjectLib.PServiceFolder
 
         public void DeleteProject(ProjectModel model)
         {
-            using (var db = new ProjectsEntities())
+            using (var db = new ProjectEntities())
             {
-                var deleteWeapon = db.UserProjects.Where(x => x.ID == model.ProjectID).First();
-                db.UserProjects.Remove(deleteWeapon);
+                var deleteProject = db.UserProjects.Where(x => x.ID == model.ProjectID).First();
+                db.UserProjects.Remove(deleteProject);
                 db.SaveChanges();
             }
         }
 
         public void UpdateProject(ProjectModel model)
         {
-            using (var db = new ProjectsEntities())
+            using (var db = new ProjectEntities())
             {
                 var projectToUpdate = db.UserProjects.Where(x => x.ID == model.ProjectID).First();
                 projectToUpdate.ProjectName = model.Name;
                 projectToUpdate.ProjectOwner = model.Owner;
-                projectToUpdate.ProjectDetail = model.Details;
+                projectToUpdate.ProjectDetails = model.Details;
                 projectToUpdate.ProjectImage = model.Image;
                 projectToUpdate.Successful = model.Success;
                 db.SaveChanges();
