@@ -38,11 +38,5 @@ namespace pay_back_time.Controllers
         {
             return View();
         }
-
-
-        //public ActionResult Apply()
-        //{
-        //    return View();
-        //}
     }
 }
