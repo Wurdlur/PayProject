@@ -54,14 +54,14 @@
     <Compile Include="PServiceFolder\ProjectService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProjectDAL\ProjectDAL.csproj">
-      <Project>{59A6E4D6-334E-4CE8-815A-6278A1701CF2}</Project>
-      <Name>ProjectDAL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectDAL\ProjectDAL.csproj">
+      <Project>{59a6e4d6-334e-4ce8-815a-6278a1701cf2}</Project>
+      <Name>ProjectDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
