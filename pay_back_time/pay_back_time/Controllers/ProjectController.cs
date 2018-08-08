@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ProjectLib.PModels;
+using ProjectLib.PServiceFolder;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,38 +10,42 @@ namespace pay_back_time.Controllers
 {
     public class ProjectController : Controller
     {
-        //Service
+        IProjectService service = new ProjectService();
 
-        // GET: Project
         public ActionResult Index()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        public ActionResult AddProject()
+        public ActionResult AddProduct()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
-        [HttpGet]
-        public ActionResult EditProject(int id)
-        {
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult EditProject()
+        public ActionResult AddProduct(ProjectModel model)
         {
-            return View();
+            service.AddProject(model);
+            return RedirectToAction("Projects", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteProject(int id)
         {
-            return View();
+            ProjectModel model = service.GetProject(id);
+            service.DeleteProject(model);
+            return RedirectToAction("Projects", "Home");
+        }
+
+        public ActionResult EditForm(int id)
+        {
+            ProjectModel model = service.GetProject(id);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult UpdateProduct(ProjectModel model)
+        {
+            service.UpdateProject(model);
+            return RedirectToAction("Projects", "Home");
         }
     }
 }

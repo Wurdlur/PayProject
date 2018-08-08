@@ -279,6 +279,7 @@
     <Content Include="Views\Apply\ApplySuccess.cshtml" />
     <Content Include="Views\Home\SuccessfulProjects.cshtml" />
     <Content Include="Views\Home\EditForm.cshtml" />
+    <Content Include="Views\Home\AddProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">

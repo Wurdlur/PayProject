@@ -38,7 +38,7 @@
 
             @if (@User.IsInRole("Admin"))
             {
-                @Html.ActionLink("ADD PROJECT", "AddProject", new { @class = "nc-btn" }, new { @id = "view-projects" });
+                @Html.ActionLink("ADD PROJECT", "AddForm", "Project", new { @class = "nc-btn" }, new { @id = "view-projects" });
 
             }
         </div>
@@ -57,7 +57,7 @@
                     <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
                         @if (@User.IsInRole("Admin"))
                         {
-                            @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectID}, new { @id = "view-projects", @class = "nc-btn" })
+                            @Html.ActionLink("EDIT", "EditForm", "Project", new { id = project.ProjectID}, new { @id = "view-projects", @class = "nc-btn" })
                         }
 
                     </div>
