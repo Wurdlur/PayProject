@@ -16,27 +16,27 @@ namespace pay_back_time.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult AddProject()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpGet]
         public ActionResult EditProject(int id)
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditProject()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult DeleteProject(int id)
         {
             return View();
