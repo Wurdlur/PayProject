@@ -17,13 +17,13 @@ namespace pay_back_time.Controllers
             return View();
         }
 
-        public ActionResult AddProduct()
+        public ActionResult AddProject()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AddProduct(ProjectModel model)
+        public ActionResult AddProject(ProjectModel model)
         {
             service.AddProject(model);
             return RedirectToAction("Projects", "Home");
@@ -36,13 +36,13 @@ namespace pay_back_time.Controllers
             return RedirectToAction("Projects", "Home");
         }
 
-        public ActionResult EditForm(int id)
+        public ActionResult EditProject(int id)
         {
             ProjectModel model = service.GetProject(id);
             return View(model);
         }
         [HttpPost]
-        public ActionResult UpdateProduct(ProjectModel model)
+        public ActionResult EditProject(ProjectModel model)
         {
             service.UpdateProject(model);
             return RedirectToAction("Projects", "Home");
