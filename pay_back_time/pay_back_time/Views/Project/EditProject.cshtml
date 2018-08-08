@@ -26,39 +26,30 @@
                     <h3>APPLICATION FOR NEUMONT INNOVATION CENTER</h3>
                 </div>
 
-                @using (Html.BeginForm("CreateApplication", "Apply", FormMethod.Post))
+                @using (Html.BeginForm())
                 {
                     <div id="form">
 
                         <div class="form-entry">
-                            <p class="label"><b>Name:</b></p>
+                            <p class="label"><b>Project Name:</b></p>
                             @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here" })
                         </div>
 
                         <div class="form-entry">
-                            <p class="label"><b>Email:</b></p>
-                            @Html.TextBoxFor(model => model.Email, new { @placeholder = "Your Email Here" })
+                            <p class="label"><b>Project Owner Name:</b></p>
+                            @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Your Email Here" })
                         </div>
 
                         <div class="form-entry">
                             <p><b>Project Description:</b></p>
-                            @Html.TextAreaFor(model => model.Description, new { @placeholder = "How did your project come about? What will it do?", @rows = 5 })
+                            @Html.TextAreaFor(model => model.Image, new { @placeholder = "How did your project come about? What will it do?", @rows = 5 })
                         </div>
 
                         <div class="form-entry">
-                            <p><b>Intended Audience:</b></p>
-                            @Html.TextAreaFor(model => model.Audience, new { @placeholder = "Who will your project benefit?", @rows = 5 })
+                            <p><b>Project Successful?:</b></p>
+                            @Html.CheckBoxFor(model => model.Success, new {@checked = true})
                         </div>
 
-                        <div class="form-entry">
-                            <p><b>Roadblocks:</b></p>
-                            @Html.TextAreaFor(model => model.Roadblocks, new { @placeholder = "Any forseeable roadblocks or obstacles?", @rows = 5 })
-                        </div>
-
-                        <div class="form-entry">
-                            <p><b>High Level Project/Product Requirements:</b></p>
-                            @Html.TextAreaFor(model => model.Requirements, new { @placeholder = "What types of people are you looking for? Any expertise you're seeking? Is there a specific market you wish to target?", @rows = 8, @maxlength = 500 })
-                        </div>
 
                     </div>
 
