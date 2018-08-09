@@ -46,8 +46,8 @@
                     <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
                         @if (@User.IsInRole("Admin"))
                         {
-                        }
                         @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                        }
 
                     </div>
                     <div class="col-m-7 project-content theme-white">

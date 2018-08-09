@@ -18,11 +18,13 @@ namespace pay_back_time.Controllers
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult AddProject()
         {
             return View();
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddProject(ProjectModel model)
         {
@@ -34,6 +36,7 @@ namespace pay_back_time.Controllers
             return RedirectToAction("Projects", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteProject(int id)
         {
             ProjectModel model = service.GetProject(id);
@@ -41,11 +44,14 @@ namespace pay_back_time.Controllers
             return RedirectToAction("Projects", "Home");
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult EditProject(int id)
         {
             ProjectModel model = service.GetProject(id);
             return View(model);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditProject(ProjectModel model)
         {
