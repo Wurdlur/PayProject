@@ -50,7 +50,7 @@
         if (!@project.Success)
         {
             <div class="slide">
-                <div class="row fit">
+                <div class="row">
                     <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
                         @Html.ActionLink("EDIT", "EditProject", "Project", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
                         @if (@User.IsInRole("Admin"))
