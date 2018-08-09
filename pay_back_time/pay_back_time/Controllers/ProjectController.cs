@@ -26,12 +26,10 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult AddProject(ProjectModel model)
         {
-
             var fileName = Path.GetFileName(model.UploadedFile.FileName);
-            model.Image = "/Content/Images/" + fileName;
             var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
             model.UploadedFile.SaveAs(path);
-
+            model.Image = "/Content/Images/" + fileName;
             service.AddProject(model);
             return RedirectToAction("Projects", "Home");
         }
@@ -51,13 +49,16 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult EditProject(ProjectModel model)
         {
-            //if(model.UploadedFile != null)
-            //{
-            //    var fileName = Path.GetFileName(model.UploadedFile.FileName);
-            //    model.Image = "/Content/Images/" + fileName;
-            //    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
-            //    model.UploadedFile.SaveAs(path);
-            //}
+            if(!(model.UploadedFile == null))
+            {
+                var fileName = Path.GetFileName(model.UploadedFile.FileName);
+                if(!string.IsNullOrEmpty(fileName))
+                {
+                    model.Image = "/Content/Images/" + fileName;
+                }
+                var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                model.UploadedFile.SaveAs(path);
+            }   
 
             service.UpdateProject(model);
             return RedirectToAction("Projects", "Home");

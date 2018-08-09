@@ -76,7 +76,10 @@ namespace ProjectLib.PServiceFolder
                 projectToUpdate.ProjectName = model.Name;
                 projectToUpdate.ProjectOwner = model.Owner;
                 projectToUpdate.ProjectDetails = model.Details;
-                projectToUpdate.ProjectImage = model.Image;
+                if (!string.IsNullOrEmpty(model.Image))
+                {
+                    projectToUpdate.ProjectImage = model.Image;
+                }
                 projectToUpdate.Successful = model.Success;
                 db.SaveChanges();
             }

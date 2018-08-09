@@ -49,32 +49,28 @@
                         <p><b>Project Successful?:</b></p>
                         <div>
                             <label>
-                                @Html.RadioButtonFor(m => m.Success, "True")
+                                @Html.RadioButtonFor(model => model.Success, "True")
                                 Yes
                             </label>
                         </div>
                         <div>
                             <label>
-                                @Html.RadioButtonFor(m => m.Success, "False")
+                                @Html.RadioButtonFor(model => model.Success, "False")
                                 No
                             </label>
                         </div>
                     </div>
                     <div class="form-entry">
                         <p><b>Project Image Upload:</b></p>
-                        @Html.TextBoxFor(m => m.Image, new { type = "file" })
-                        @*<input type="file" name="UploadedFile" accept="image/*" />*@
-                        @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
-                    </div>
-                    <div class="form-entry">
-                        @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                        <input type="file" name="UploadedFile" accept="image/*" />
                     </div>
 
                 </div>
 
-                    <div id="submit-btn">
-                        <input type="submit" value="Submit" class="nc-btn uppercase" />
-                    </div>
+                <div id="submit-btn">
+                    @Html.ActionLink("Delete", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "form-delete", @class = "nc-btn uppercase" })
+                    <input type="submit" value="Update" class="nc-btn uppercase" />
+                </div>
                 }
 
             </div>
