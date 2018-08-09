@@ -28,49 +28,47 @@
 
                 @using (Html.BeginForm("EditProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                <div id="form">
+                    <div id="form">
 
-                    <div class="form-entry">
-                        <p><b>Project Name:</b></p>
-                        @Html.TextBoxFor(model => model.Name, new { @placeholder = "Project Name Here", @required = "required" })
-                    </div>
-
-                    <div class="form-entry">
-                        <p><b>Project Owner:</b></p>
-                        @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Project Owner Here", @required = "required" })
-                    </div>
-
-                    <div class="form-entry">
-                        <p><b>Project Description:</b></p>
-                        @Html.TextAreaFor(model => model.Details, new { @placeholder = "Details about the project", @rows = 5, @required = "required" })
-                    </div>
-
-                    <div class="form-entry">
-                        <p><b>Project Successful?:</b></p>
-                        <div>
-                            <label>
-                                @Html.RadioButtonFor(m => m.Success, "True")
-                                Yes
-                            </label>
+                        <div class="form-entry">
+                            <p><b>Project Name:</b></p>
+                            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Project Name Here", @required = "required" })
                         </div>
-                        <div>
-                            <label>
-                                @Html.RadioButtonFor(m => m.Success, "False")
-                                No
-                            </label>
+
+                        <div class="form-entry">
+                            <p><b>Project Owner:</b></p>
+                            @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Project Owner Here", @required = "required" })
                         </div>
-                    </div>
-                    <div class="form-entry">
-                        <p><b>Project Image Upload:</b></p>
-                        <input type="file" name="UploadedFile" accept="image/*" />
-                        @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
-                    </div>
-                    <div class="form-entry">
-                    @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
-                    </div>
 
-                </div>
+                        <div class="form-entry">
+                            <p><b>Project Description:</b></p>
+                            @Html.TextAreaFor(model => model.Details, new { @placeholder = "Details about the project", @rows = 5, @required = "required" })
+                        </div>
 
+                        <div class="form-entry">
+                            <p><b>Project Successful?:</b></p>
+                            <div>
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Success, "True")
+                                    Yes
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    @Html.RadioButtonFor(m => m.Success, "False")
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-entry">
+                            <p><b>Project Image Upload:</b></p>
+                            <input type="file" name="UploadedFile" accept="image/*" />
+                            @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
+                        </div>
+
+
+                    </div>
+                        @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
                     <div id="submit-btn">
                         <input type="submit" value="Submit" class="nc-btn uppercase" />
                     </div>
