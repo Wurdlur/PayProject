@@ -1,7 +1,7 @@
 ﻿@model ProjectLib.PModels.ProjectModel
 
 @{
-    ViewBag.Title = "NCCS Innovation Lab | Edit";
+    ViewBag.Title = "NCCS Innovation Lab | Edit Project";
 }
 
 <nav class='navbar-fixed-top-after'>
@@ -23,35 +23,53 @@
         <div class="col-l-12 section-content">
             <div id="application_form">
                 <div id="application_header">
-                    <h3>APPLICATION FOR NEUMONT INNOVATION CENTER</h3>
+                    <h3>EDIT PROJECT</h3>
                 </div>
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("EditProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
-                    <div id="form">
+                <div id="form">
 
-                        <div class="form-entry">
-                            <p class="label"><b>Project Name:</b></p>
-                            @Html.TextBoxFor(model => model.Name, new { @placeholder = "Your Name Here" })
-                        </div>
-
-                        <div class="form-entry">
-                            <p class="label"><b>Project Owner Name:</b></p>
-                            @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Your Email Here" })
-                        </div>
-
-                        <div class="form-entry">
-                            <p><b>Project Description:</b></p>
-                            @Html.TextAreaFor(model => model.Image, new { @placeholder = "How did your project come about? What will it do?", @rows = 5 })
-                        </div>
-
-                        <div class="form-entry">
-                            <p><b>Project Successful?:</b></p>
-                            @Html.CheckBoxFor(model => model.Success, new {@checked = true})
-                        </div>
-
-
+                    <div class="form-entry">
+                        <p><b>Project Name:</b></p>
+                        @Html.TextBoxFor(model => model.Name, new { @placeholder = "Project Name Here", @required = "required" })
                     </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Owner:</b></p>
+                        @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Project Owner Here", @required = "required" })
+                    </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Description:</b></p>
+                        @Html.TextAreaFor(model => model.Details, new { @placeholder = "Details about the project", @rows = 5, @required = "required" })
+                    </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Successful?:</b></p>
+                        <div>
+                            <label>
+                                @Html.RadioButtonFor(m => m.Success, "True")
+                                Yes
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                @Html.RadioButtonFor(m => m.Success, "False")
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-entry">
+                        <p><b>Project Image Upload:</b></p>
+                        <input type="file" name="UploadedFile" accept="image/*" />
+                        @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
+                    </div>
+                    <div class="form-entry">
+                    @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                    </div>
+
+                </div>
 
                     <div id="submit-btn">
                         <input type="submit" value="Submit" class="nc-btn uppercase" />

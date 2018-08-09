@@ -35,10 +35,9 @@
 
             @if (@User.IsInRole("Admin"))
             {
-                @Html.ActionLink("ADD PROJECT", "AddForm", "Project", new { @class = "nc-btn" }, new { @id = "view-projects" });
 
             }
-            @Html.ActionLink("ADD PROJECT", "AddProject", new { @class = "nc-btn" }, new { @id = "view-projects" });
+            @Html.ActionLink("ADD PROJECT", "AddProject", "Project", new { @class = "nc-btn" }, new { @id = "view-projects" })
         </div>
         <div class="col-l-5" id="projects-bg"></div>
 
@@ -53,10 +52,9 @@
             <div class="slide">
                 <div class="row fit">
                     <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
-                        @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                        @Html.ActionLink("EDIT", "EditProject", "Project", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
                         @if (@User.IsInRole("Admin"))
                         {
-                            @Html.ActionLink("EDIT", "EditForm", "Project", new { id = project.ProjectID}, new { @id = "view-projects", @class = "nc-btn" })
                         }
 
                     </div>

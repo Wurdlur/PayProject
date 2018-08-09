@@ -265,7 +265,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
-    <Folder Include="Views\Project\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Fonts\Linotype_-_DINNextLTPro-Bold.otf" />
@@ -278,8 +277,8 @@
     <Content Include="Views\Apply\Apply.cshtml" />
     <Content Include="Views\Apply\ApplySuccess.cshtml" />
     <Content Include="Views\Home\SuccessfulProjects.cshtml" />
-    <Content Include="Views\Home\EditForm.cshtml" />
-    <Content Include="Views\Home\AddProduct.cshtml" />
+    <Content Include="Views\Project\AddProject.cshtml" />
+    <Content Include="Views\Project\EditProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLibrary\ModelLibrary.csproj">

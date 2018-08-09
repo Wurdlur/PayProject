@@ -1,8 +1,80 @@
 ﻿@model ProjectLib.PModels.ProjectModel
 
 @{
-    ViewBag.Title = "AddProduct";
+    ViewBag.Title = "NCCS Innovation Lab | Add Project";
 }
 
-<h2>AddProduct</h2>
 
+<nav class='navbar-fixed-top-after'>
+    <a href="javascript:void(0)" id='close-menu' class="closebtn">&times;</a>
+    <img class='nav-icon' src='~/Content/Images/nclogo.png' id='nc-icon' />
+    @Html.ActionLink("HOME", "Index", "Home")
+    @Html.ActionLink("PROJECTS", "Projects", "Home", null, new { @class = "active" })
+    @Html.ActionLink("EVENTS", "Events", "Home")
+    @Html.ActionLink("CONTACT", "Contact", "Home")
+    @Html.ActionLink("APPLY", "Apply", "Apply")
+</nav>
+<div class="navbar-side">
+    <span id="hamburger" onclick="">&#9776;</span>
+    <img class="nav-icon-side" src='~/Content/Images/nclogo.png' id='nc-icon-side' />
+</div>
+<div class="section">
+
+    <div class="section row theme-steelgray">
+        <div class="col-l-12 section-content">
+            <div id="application_form">
+                <div id="application_header">
+                    <h3>ADD PROJECT</h3>
+                </div>
+
+                @using (Html.BeginForm("AddProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+                <div id="form">
+
+                    <div class="form-entry">
+                        <p><b>Project Name:</b></p>
+                        @Html.TextBoxFor(model => model.Name, new { @placeholder = "Project Name Here", @required = "required" })
+                    </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Owner:</b></p>
+                        @Html.TextBoxFor(model => model.Owner, new { @placeholder = "Project Owner Here", @required = "required" })
+                    </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Description:</b></p>
+                        @Html.TextAreaFor(model => model.Details, new { @placeholder = "Details about the project", @rows = 5, @required = "required" })
+                    </div>
+
+                    <div class="form-entry">
+                        <p><b>Project Successful?:</b></p>
+                        <div>
+                            <label>
+                                @Html.RadioButtonFor(m => m.Success, "True")
+                                Yes
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                @Html.RadioButtonFor(m => m.Success, "False")
+                                No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-entry">
+                        <p><b>Project Image Upload:</b></p>
+                        <input type="file" name="UploadedFile" accept="image/*"/>
+                        @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
+                    </div>
+
+                </div>
+
+                    <div id="submit-btn">
+                        <input type="submit" value="Submit" class="nc-btn uppercase" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

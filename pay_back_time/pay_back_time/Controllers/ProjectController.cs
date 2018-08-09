@@ -2,6 +2,7 @@
 using ProjectLib.PServiceFolder;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -25,6 +26,12 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult AddProject(ProjectModel model)
         {
+
+            var fileName = Path.GetFileName(model.UploadedFile.FileName);
+            model.Image = "/Content/Images/" + fileName;
+            var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+            model.UploadedFile.SaveAs(path);
+
             service.AddProject(model);
             return RedirectToAction("Projects", "Home");
         }
@@ -44,6 +51,12 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult EditProject(ProjectModel model)
         {
+
+            var fileName = Path.GetFileName(model.UploadedFile.FileName);
+            model.Image = "/Content/Images/" + fileName;
+            var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+            model.UploadedFile.SaveAs(path);
+
             service.UpdateProject(model);
             return RedirectToAction("Projects", "Home");
         }
