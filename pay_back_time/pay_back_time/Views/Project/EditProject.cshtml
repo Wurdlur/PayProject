@@ -29,7 +29,7 @@
                 @using (Html.BeginForm("EditProject", "Project", FormMethod.Post, new { enctype = "multipart/form-data" }))
                 {
                 <div id="form">
-
+                    @Html.HiddenFor(x => x.ProjectID)
                     <div class="form-entry">
                         <p><b>Project Name:</b></p>
                         @Html.TextBoxFor(model => model.Name, new { @placeholder = "Project Name Here", @required = "required" })
@@ -62,11 +62,12 @@
                     </div>
                     <div class="form-entry">
                         <p><b>Project Image Upload:</b></p>
-                        <input type="file" name="UploadedFile" accept="image/*" />
+                        @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                        @*<input type="file" name="UploadedFile" accept="image/*" />*@
                         @*@Html.TextBoxFor(model => model.Image, new { @placeholder = "Project Image", @required = "required" })*@
                     </div>
                     <div class="form-entry">
-                    @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                        @Html.ActionLink("DELETE", "DeleteProject", "Project", new { id = Model.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
                     </div>
 
                 </div>

@@ -51,11 +51,13 @@ namespace pay_back_time.Controllers
         [HttpPost]
         public ActionResult EditProject(ProjectModel model)
         {
-
-            var fileName = Path.GetFileName(model.UploadedFile.FileName);
-            model.Image = "/Content/Images/" + fileName;
-            var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
-            model.UploadedFile.SaveAs(path);
+            //if(model.UploadedFile != null)
+            //{
+            //    var fileName = Path.GetFileName(model.UploadedFile.FileName);
+            //    model.Image = "/Content/Images/" + fileName;
+            //    var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+            //    model.UploadedFile.SaveAs(path);
+            //}
 
             service.UpdateProject(model);
             return RedirectToAction("Projects", "Home");
