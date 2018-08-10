@@ -37,17 +37,19 @@
 </div>
 
 <div class="section" id="projectSlides">
+    @{int counter = 0; }
     @foreach (var project in Model.Projects)
-    {
+        {
         if (@project.Success)
         {
+            counter++;
             <div class="slide">
                 <div class="row ">
                     <div class="col-m-5 project-bg" style="background-image: url(@project.Image);">
-                        @if (@User.IsInRole("Admin"))
-                        {
-                        @Html.ActionLink("EDIT", "EditProject", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
-                        }
+                        @*@if (@User.IsInRole("Admin"))*@
+                        
+                        @Html.ActionLink("EDIT", "EditProject", "Project", new { id = project.ProjectID }, new { @id = "view-projects", @class = "nc-btn" })
+                        
 
                     </div>
                     <div class="col-m-7 project-content theme-white">
@@ -62,7 +64,7 @@
             </div>
 
         }
-        else
+        else if (counter == 0)
         {
             <div>
                 <h1 class="col-m-7 project-content uppercase project-name">COMING SOON</h1>

@@ -18,25 +18,31 @@ namespace pay_back_time.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult AddProject()
         {
             return View();
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult AddProject(ProjectModel model)
         {
-            var fileName = Path.GetFileName(model.UploadedFile.FileName);
-            var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
-            model.UploadedFile.SaveAs(path);
-            model.Image = "/Content/Images/" + fileName;
+            if(!(model.UploadedFile == null))
+            {
+                var fileName = Path.GetFileName(model.UploadedFile.FileName);
+                var path = Path.Combine(Server.MapPath("~/Content/Images/"), fileName);
+                model.UploadedFile.SaveAs(path);
+                model.Image = "/Content/Images/" + fileName;
+            } else
+            {
+                model.Image = "/Content/Images/building.jpg";
+            }
             service.AddProject(model);
             return RedirectToAction("Projects", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult DeleteProject(int id)
         {
             ProjectModel model = service.GetProject(id);
@@ -44,14 +50,14 @@ namespace pay_back_time.Controllers
             return RedirectToAction("Projects", "Home");
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult EditProject(int id)
         {
             ProjectModel model = service.GetProject(id);
             return View(model);
         }
 
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult EditProject(ProjectModel model)
         {
